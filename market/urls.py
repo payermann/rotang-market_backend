@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from main import views
 from django.conf.urls import url
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api/products/$', views.products_list),
     url(r'^api/products/(?P<pk>[0-9]+)$', views.products_detail),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
