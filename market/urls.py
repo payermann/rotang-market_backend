@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from main import views
 from django.conf.urls import url
 from django.conf.urls.static import static
@@ -22,7 +22,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/cart/', include('cart.urls')),
     url(r'^api/products/$', views.products_list),
     url(r'^api/products/(?P<pk>[0-9]+)$', views.products_detail),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
