@@ -6,7 +6,16 @@ from main.serializers import ProductSerializer
 
 @api_view(['GET'])
 def cart_list(request):
-    return Response({'cart': request.session.get('cart')})
+    if 'cart' in request.session:
+        data = []
+        cart = request.session.get('cart')
+        for i in cart:
+            data.append(Product.objects.get(pk=int(i)))
+        serializer = ProductSerializer(
+            data, context={'request': request}, many=True)
+        return Response({'data': serializer.data,'cart': request.session['cart']})
+    else:
+        return Response({'data': "Корзина пуста"})
 
 
 @api_view(['POST'])
@@ -31,10 +40,11 @@ def delete_from_cart(request, pk):
         if str(pk) in request.session['cart']:
             del request.session['cart'][str(pk)]
             request.session.modified = True
-    return Response('Успешно удалено')
+    return Response({'data': "Успешно удалено"})
 
 
 @api_view(['DELETE'])
 def delete_cart(request):
     if 'cart' in request.session:
         del request.session['cart']
+    return Response({'data': "Корзина очищена"})
