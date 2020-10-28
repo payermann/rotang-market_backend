@@ -10,10 +10,10 @@ from .serializers import *
 @api_view(['GET'])
 def products_list(request):
     data = []
-    nextPage = 1
-    previousPage = 1
     products = Product.objects.all()
     page = request.GET.get('page', 1)
+    nextPage = page
+    previousPage = page
     paginator = Paginator(products, 10)
     try:
         data = paginator.page(page)
