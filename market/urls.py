@@ -19,8 +19,12 @@ from main import views
 from django.conf.urls import url
 from django.conf.urls.static import static
 from django.conf import settings
+from django.views.generic.base import TemplateView
 
 urlpatterns = [
+    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('admin/', admin.site.urls),
     path('api/cart/', include('cart.urls')),
     url(r'^api/products/$', views.products_list),
