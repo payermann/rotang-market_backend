@@ -10,8 +10,10 @@
     <a href="{% url 'logout' %}">Выйти</a><br>
     <a href="/">Вернуться на главную</a><br/>
     {{ room_name|json_script:"room-name" }}
+    {{ username|json_script:"username" }}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
+        const username = JSON.parse(document.getElementById('username').textContent);
 
         const chatSocket = new WebSocket(
             'ws://'
@@ -45,8 +47,9 @@
         document.querySelector('#chat-message-submit').onclick = function(e) {
             const messageInputDom = document.querySelector('#chat-message-input');
             const message = messageInputDom.value;
+            const endmessage = username +': ' + message
             chatSocket.send(JSON.stringify({
-                'message': message
+                'message': endmessage
             }));
             messageInputDom.value = '';
         };
