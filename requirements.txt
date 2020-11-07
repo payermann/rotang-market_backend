@@ -3,3 +3,5 @@ psycopg2-binary
 djangorestframework
 django-cors-headers
 Pillow
+channels
+channels_redis

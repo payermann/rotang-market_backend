@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'main',
     'cart',
     'accounts',
+    'channels',
+    'chat',
 ]
 
 MIDDLEWARE = [
@@ -145,3 +147,13 @@ CORS_ALLOW_CREDENTIALS = True
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+ASGI_APPLICATION = "market.routing.application"
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('redis', 6379)],
+        },
+    },
+}
