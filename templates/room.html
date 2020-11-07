@@ -7,7 +7,8 @@
     <input id="chat-message-input" type="text" size="70"><br>
     <input id="chat-message-submit" type="button" value="отправить">
     Вы ({{ user.username }}) общаетесь с {{ room_user }}   
-    <a href="{% url 'logout' %}">Выйти</a>
+    <a href="{% url 'logout' %}">Выйти</a><br>
+    <a href="/">Вернуться на главную</a><br/>
     {{ room_name|json_script:"room-name" }}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
