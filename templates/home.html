@@ -34,6 +34,10 @@
 {% else %}
   <p>Вы не вошли</p>
   <a href="{% url 'login' %}">Войти</a><br/>
-  <a href="{% url 'signup' %}">Регистрация</a>
+  <a href="{% url 'signup' %}">Регистрация</a> <br/><br/>
+  <p>
+    Добро пожаловать <br/>
+    Здесь использованы Docker Django PostgreSQL Channels Redis
+  </p>
 {% endif %}
 {% endblock %}
