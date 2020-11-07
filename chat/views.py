@@ -7,7 +7,8 @@ def room(request, room_name, username):
         temp = sorted((room_name, username))
         return render(request, 'room.html', {
             'room_name': str(temp[0])+str(temp[1]),
-            'room_user': room_name
+            'room_user': room_name,
+            'username': username
         })
     else:
         return render(request, 'home.html', {
