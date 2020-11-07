@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Чат{% endblock %}
 {% block content %}
-{% if user.is_authenticated %}
+{% if user.is_authenticated and user.username in room_name%}
 <body>
     <textarea id="chat-log" readonly cols="100" rows="20"></textarea><br>
     <input id="chat-message-input" type="text" size="70"><br>
