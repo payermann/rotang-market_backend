@@ -142,7 +142,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-SESSION_COOKIE_SAMESITE = 'None'
+# SESSION_COOKIE_SAMESITE = 'None'
 CORS_ALLOW_CREDENTIALS = True
 
 LOGIN_REDIRECT_URL = '/'
